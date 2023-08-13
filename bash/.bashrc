@@ -1,12 +1,13 @@
-# ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
-
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
       *) return;;
 esac
+
+# EXPORT
+export TERM="xterm-256color"                      
+export EDITOR="nvim"              
+export VISUAL="codium"  
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
@@ -23,9 +24,9 @@ HISTFILESIZE=2000
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
-# If set, the pattern "**" used in a pathname expansion context will
-# match all files and zero or more directories and subdirectories.
-#shopt -s globstar
+# SET MANPAGER
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -57,20 +58,12 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    PS1='  \[\e[96m\]\w \[\e[91m\]$(git branch 2>/dev/null | grep '"'"'*'"'"' | colrm 1 2)\[\e[0m\] \n  \[\e[96m\]❯\[\e[38;5;217m\]❯ \[\e[0m\]'
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
 unset color_prompt force_color_prompt
 
-# If this is an xterm set the title to user@host:dir
-case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-    ;;
-*)
-    ;;
-esac
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -84,13 +77,7 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-# colored GCC warnings and errors
-#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -115,4 +102,53 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+	#ALIASES
+	alias ins="sudo nala install"
+	alias del="sudo nala remove"
+	alias upd="sudo nala update && sudo nala upgrade"
+	alias ser="nala search"
+	alias c="clear; echo; fastfetch; echo"
+	alias ll="exa --long -all --icons"
+	alias ls="exa --icons"
+	alias cat="batcat --theme="Catpuccin-mocha""
+	alias du="sudo dust"
+	alias lg="lazygit"
+	alias tre="tre -e"
+	alias fd="fdfind"
+	alias code="codium"
+
+	#NVIM ALIASES
+	alias vi="nvim"
+	alias svi="sudo nvim"
+	alias vis='nvim "+set si"'
+	
+	#YT-DLP ALIAS
+	alias yd="yt-dlp"
+	alias yd-mp4="yt-dlp -f 'mp4'"
+
+	#TMUX ALIASES
+	alias t="tmux"
+	alias tn="tmux new -s"
+	alias ta="tmux attach"
+	alias td="tmux detach"
+
+	#ZELLIJ ALIASES
+	alias zl="zellij"
+	alias zn="zellij -s"
+	alias zt="zellij attach"
+	alias zs="zellij list-sessions"
+	alias zk="zellij kill-all-sessions"
+
+   # NAVIGATION
+   alias ..='cd ..'
+   alias ...='cd ../..'
+   alias .3='cd ../../..'
+   alias .4='cd ../../../..'
+   alias .5='cd ../../../../..'
+
+# CARGO PATH
 . "$HOME/.cargo/env"
+
+#ZOXIDE INIT
+eval "$(zoxide init bash)"
