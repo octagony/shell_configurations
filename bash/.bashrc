@@ -25,7 +25,7 @@ HISTFILESIZE=2000
 shopt -s checkwinsize
 
 # SET MANPAGER
-export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
 
 
 # make less more friendly for non-text input files, see lesspipe(1)
