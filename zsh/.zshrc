@@ -1,14 +1,20 @@
+#EXPORTS
 export ZSH="$HOME/.oh-my-zsh"
-
 export TERM="xterm-256color"
 export EDITOR="nvim"
 export VISUAL="coduim"
 
+#LOAD GIT INFO
 autoload -Uz vcs_info
 precmd() { vcs_info }
-zstyle ':vcs_info:git:*' formats '(%b) '
+zstyle ':vcs_info:git:*' formats 'on (%b) '
+
+#NEWLINE HELPER
 NEWLINE=$'\n'
-PROMPT="  %F{blue}%~%f %F{red}${vcs_info_msg_0_}%f  ${NEWLINE}  %F{magenta}>%  %F{cyan}%"
+
+#CUSTOM PROMPT
+setopt PROMPT_SUBST
+PROMPT='  %B% %F{blue}%~%f %F{red}${vcs_info_msg_0_} %b% ${NEWLINE}  %F{magenta}❯% %F{cyan}❯%  %F{blue}%'
 
 # PLUGINS
 plugins=(
@@ -18,6 +24,7 @@ plugins=(
      git
 )
 
+#OH-MY-ZSH SOURCE
 source $ZSH/oh-my-zsh.sh
 
 # MANPAGER
@@ -74,4 +81,3 @@ export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
   echo ""
   fastfetch
   echo ""
-
