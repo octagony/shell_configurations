@@ -1,5 +1,4 @@
 #EXPORTS
-export ZSH="$HOME/.oh-my-zsh"
 export TERM="xterm-256color"
 export EDITOR="nvim"
 export VISUAL="coduim"
@@ -16,63 +15,51 @@ NEWLINE=$'\n'
 setopt PROMPT_SUBST
 PROMPT='  %B% %F{blue}%~%f %F{red}${vcs_info_msg_0_} %b% ${NEWLINE}  %F{magenta}❯% %F{cyan}❯%  %F{blue}%'
 
-# PLUGINS
-plugins=(
-     zsh-autosuggestions
-     sudo
-     dirhistory
-     git
-)
-
-#OH-MY-ZSH SOURCE
-source $ZSH/oh-my-zsh.sh
-
 # MANPAGER
 export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
 
-# ALIASES
-	alias ins="sudo nala install"
-	alias del="sudo nala remove"
-	alias upd="sudo nala update && sudo nala upgrade"
-	alias ser="nala search"
-	alias c="clear; echo; fastfetch; echo"
-	alias ll="exa --long -all --icons"
-	alias ls="exa --icons"
-	alias cat="batcat --theme="Catpuccin-mocha""
-	alias du="sudo dust"
-	alias lg="lazygit"
-	alias tre="tre -e"
-	alias fd="fdfind"
-	alias code="codium"
+#ALIASES
+alias ins="paru -Sy"
+alias del="sudo paru -Rc"
+alias upd="sudo nala update && sudo nala upgrade"
+alias ser="nala search"
+alias c="clear; echo; fastfetch; echo"
+alias ll="exa --long -all --icons"
+alias ls="exa --icons"
+alias cat="bat --theme="Catpuccin-mocha""
+alias du="sudo dust"
+alias lg="lazygit"
+alias tre="tre -e"
+alias fd="fdfind"
+alias code="codium"
 
-	#NVIM ALIASES
-	alias vi="nvim"
-	alias svi="sudo nvim"
-	alias vis='nvim "+set si"'
-	
-	#YT-DLP ALIAS
-	alias yd="yt-dlp"
-	alias yd-mp4="yt-dlp -f 'mp4'"
+#NVIM ALIASES
+alias vi="nvim"
+alias svi="sudo nvim"
+alias vis='nvim "+set si"'
 
-	#TMUX ALIASES
-	alias t="tmux"
-	alias tn="tmux new -s"
-	alias ta="tmux attach"
-	alias td="tmux detach"
+#YT-DLP ALIAS
+alias yd="yt-dlp"
 
-	#ZELLIJ ALIASES
-	alias zl="zellij"
-	alias zn="zellij -s"
-	alias zt="zellij attach"
-	alias zs="zellij list-sessions"
-	alias zk="zellij kill-all-sessions"
+#TMUX ALIASES
+alias t="tmux"
+alias tn="tmux new -s"
+alias ta="tmux attach"
+alias td="tmux detach"
 
-   # NAVIGATION
-   alias ..='cd ..'
-   alias ...='cd ../..'
-   alias .3='cd ../../..'
-   alias .4='cd ../../../..'
-   alias .5='cd ../../../../..'
+#ZELLIJ ALIASES
+alias zl="zellij"
+alias zn="zellij -s"
+alias zt="zellij attach"
+alias zs="zellij list-sessions"
+alias zk="zellij kill-all-sessions"
+
+ # NAVIGATION
+ alias ..='cd ..'
+ alias ...='cd ../..'
+ alias .3='cd ../../..'
+ alias .4='cd ../../../..'
+ alias .5='cd ../../../../..'
 
 # ZOXIDE INIT
   eval "$(zoxide init zsh)"
@@ -81,3 +68,16 @@ export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
   echo ""
   fastfetch
   echo ""
+
+# Created by Zap installer
+[ -f "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh" ] && source "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh"
+plug "zsh-users/zsh-autosuggestions"
+plug "zap-zsh/supercharge"
+plug "zap-zsh/completions"
+plug "wintermi/zsh-rust"
+plug "embeddedpenguin/sanekeybinds"
+plug "zsh-users/zsh-syntax-highlighting"
+
+# Load and initialise completion system
+autoload -Uz compinit
+compinit
