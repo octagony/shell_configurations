@@ -3,10 +3,9 @@ if status is-interactive
 	zoxide init fish | source
 	
 	#ALIASES
-	alias ins="sudo nala install"
-	alias del="sudo nala remove"
-	alias upd="sudo nala update && sudo nala upgrade"
-	alias ser="nala search"
+	alias ins="paru -S --disable-download-timeout"
+	alias del="paru -Rcsn"
+	alias upd="paru -Syu"
 	alias c="clear; echo; fastfetch; echo"
 	alias ll="exa --long -all --icons"
 	alias ls="exa --icons"
@@ -14,7 +13,6 @@ if status is-interactive
 	alias du="sudo dust"
 	alias lg="lazygit"
 	alias tre="tre -e"
-	alias fd="fdfind"
 	alias code="codium"
 
 	#NVIM ALIASES
@@ -31,19 +29,17 @@ if status is-interactive
 	alias ta="tmux attach"
 	alias td="tmux detach"
 
-	#ZELLIJ ALIASES
-	alias zl="zellij"
-	alias zn="zellij -s"
-	alias zt="zellij attach"
-	alias zs="zellij list-sessions"
-	alias zk="zellij kill-all-sessions"
+  #CARGO ALIASES
+  alias ca="cargo add"
+  alias cr="cargo run"
+  alias cc="cargo check"
 
-   # NAVIGATION
-   alias ..='cd ..'
-   alias ...='cd ../..'
-   alias .3='cd ../../..'
-   alias .4='cd ../../../..'
-   alias .5='cd ../../../../..'
+	# NAVIGATION
+	alias ..='cd ..'
+	alias ...='cd ../..'
+	alias .3='cd ../../..'
+	alias .4='cd ../../../..'
+	alias .5='cd ../../../../..'
 
 	#SETS
 	set -gx EDITOR nvim

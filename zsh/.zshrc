@@ -19,9 +19,9 @@ PROMPT='  %B% %F{blue}%~%f %F{red}${vcs_info_msg_0_} %b% ${NEWLINE}  %F{magenta}
 export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
 
 #ALIASES
-alias ins="paru -Sy"
-alias del="sudo paru -Rc"
-alias upd="sudo nala update && sudo nala upgrade"
+alias ins="paru -S --disable-download-timeout"
+alias del="paru -Rcsn"
+alias upd="paru -Syu"
 alias ser="nala search"
 alias c="clear; echo; fastfetch; echo"
 alias ll="exa --long -all --icons"
@@ -47,12 +47,10 @@ alias tn="tmux new -s"
 alias ta="tmux attach"
 alias td="tmux detach"
 
-#ZELLIJ ALIASES
-alias zl="zellij"
-alias zn="zellij -s"
-alias zt="zellij attach"
-alias zs="zellij list-sessions"
-alias zk="zellij kill-all-sessions"
+#CARGO ALIASES
+alias ca="cargo add"
+alias cr="cargo run"
+alias cc="cargo check"
 
  # NAVIGATION
  alias ..='cd ..'

@@ -57,13 +57,7 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-if [ "$color_prompt" = yes ]; then
-    PS1='  \[\e[96m\]\w \[\e[91m\]$(git branch 2>/dev/null | grep '"'"'*'"'"' | colrm 1 2)\[\e[0m\] \n  \[\e[96m\]❯\[\e[38;5;217m\]❯ \[\e[0m\]'
-else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-fi
-unset color_prompt force_color_prompt
-
+export PS1='  \[\e[96m\]\w \[\e[91m\]$(git branch 2>/dev/null | grep '"'"'*'"'"' | colrm 1 2)\[\e[0m\] \n  \[\e[96m\]❯\[\e[38;5;217m\]❯ \[\e[0m\]'
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -104,9 +98,9 @@ if ! shopt -oq posix; then
 fi
 
 	#ALIASES
-	alias ins="sudo nala install"
-	alias del="sudo nala remove"
-	alias upd="sudo nala update && sudo nala upgrade"
+	alias ins="paru -S --disable-download-timeout"
+	alias del="paru -Rcsn"
+	alias upd="paru -Syu"
 	alias ser="nala search"
 	alias c="clear; echo; fastfetch; echo"
 	alias ll="exa --long -all --icons"
@@ -127,18 +121,16 @@ fi
 	alias yd="yt-dlp"
 	alias yd-mp4="yt-dlp -f 'mp4'"
 
+  #CARGO ALIASES
+  alias ca="cargo add"
+  alias cr="cargo run"
+  alias cc="cargo check"
+
 	#TMUX ALIASES
 	alias t="tmux"
 	alias tn="tmux new -s"
 	alias ta="tmux attach"
 	alias td="tmux detach"
-
-	#ZELLIJ ALIASES
-	alias zl="zellij"
-	alias zn="zellij -s"
-	alias zt="zellij attach"
-	alias zs="zellij list-sessions"
-	alias zk="zellij kill-all-sessions"
 
    # NAVIGATION
    alias ..='cd ..'
