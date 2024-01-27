@@ -138,6 +138,14 @@ fi
    alias .3='cd ../../..'
    alias .4='cd ../../../..'
    alias .5='cd ../../../../..'
+   
+   # GIT
+   alias gs='git status'
+   alias gc='git commit'
+   alias gcc='git checkout'
+   alias gm='git merge'
+   alias gf='git fetch'
+
 
 # CARGO PATH
 . "$HOME/.cargo/env"

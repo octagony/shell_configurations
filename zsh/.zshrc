@@ -17,6 +17,7 @@ plugins=(git
 export ZSH="$HOME/.oh-my-zsh"
 export PATH=/home/octagony/.bun/bin/:$PATH
 export PATH=/usr/lib/docker/cli-plugins/:$PATH
+export PATH=/home/octagony/.config/composer/vendor/bin:$PATH
 
 # FNM
 export PATH="/home/octagony/.local/share/fnm:$PATH"
@@ -58,6 +59,13 @@ alias ...='cd ../..'
 alias .3='cd ../../..'
 alias .4='cd ../../../..'
 alias .5='cd ../../../../..'
+
+# GIT 
+alias gs='git status'
+alias gf='git fetch'
+alias gcc='git checkout'
+alias gc='git commit'
+alias gm='git merge'
 
 #Execute fastfetch
 echo
