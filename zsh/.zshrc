@@ -12,6 +12,9 @@ plugins=(git
      dirhistory
 )
 
+#SET DEFAULT EDITOR TO NVIM
+export EDITOR=nvim
+export VISUAL=nvim
 
 #EXPORTS
 export ZSH="$HOME/.oh-my-zsh"
